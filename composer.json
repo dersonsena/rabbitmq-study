@@ -1,0 +1,13 @@
+{
+    "name": "dersonsena/rabbitmq",
+    "description": "RabbitMQ Study",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.10"
+    },
+    "authors": [
+        {
+            "name": "Kilderson Sena",
+            "email": "dersonsena@gmail.com"
+        }
+    ]
+}
