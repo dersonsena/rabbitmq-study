@@ -1,0 +1,40 @@
+version: '3'
+services:
+  rabbitmq1:
+    image: rabbitmq:3-management
+    container_name: rabbitmq1
+    hostname: rabbitmq1
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+     - rabbitmq-data:/var/lib/rabbitmq
+    environment:
+     - RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}
+     - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+     - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+     - CLUSTERED=true
+    networks:
+      - gs-network
+ 
+  # haproxy:
+  #   image: haproxy:1.6
+  #   container_name: haproxy
+  #   hostname: haproxy
+  #   ports:
+  #     - 5672:5672
+  #     - 20000:20000
+  #   network_mode: "bridge"
+  #   links:
+  #     - rabbitmq1:rabbitmq1
+  #     - rabbitmq2:rabbitmq2
+  #     - rabbitmq3:rabbitmq3
+  #     - rabbitmq4:rabbitmq4
+
+networks:
+  gs-network:
+    driver: bridge
+
+volumes:
+  rabbitmq-data:
+    driver: local

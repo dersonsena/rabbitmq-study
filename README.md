@@ -2,32 +2,26 @@
 
 ### Docker Statements
 
-To up the **RabbitMQ** container, run: 
+To up the **RabbitMQ** containers, run: 
 
 ```
-docker run -d -p 5672:5672 --hostname rabbitmq --name rabbitmq rabbitmq:3
-```
-
-To up the **RabbitMQ Management** container, run: 
-
-```
-docker run -d -p 15672:15672 --hostname rabbitmq-admin --name rabbitmq-admin rabbitmq:3-management
+docker-compose up -d
 ```
 
 ### Run example
 
-1 - Run the Consumer script:
+1 - Enter in the example path (e.g `hello-world`), open 2 or more terminals to receivers or workers:
 
 ```php
-/usr/bin/php receive.php
+/usr/bin/php hello-world/receive.php
 
 // Output: [*] Waiting for messages. To exit press CTRL + C
 ```
 
-2 - Throw message(s) to broker:
+2 - Throw message(s) as below:
 
 ```php
-/usr/bin/php sender.php
+/usr/bin/php hello-world/send.php
 
 // Output: [x] Sent 'Hello World!
 ```
