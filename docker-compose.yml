@@ -16,6 +16,7 @@ services:
      - CLUSTERED=true
     networks:
       - gs-network
+      - internal
  
   # haproxy:
   #   image: haproxy:1.6
@@ -33,6 +34,8 @@ services:
 
 networks:
   gs-network:
+    external: true
+  internal:
     driver: bridge
 
 volumes:

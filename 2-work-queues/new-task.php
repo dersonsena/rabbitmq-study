@@ -14,7 +14,7 @@ $channel->queue_declare('task_queue', false, true, false, false);
 $data = implode(' ', array_slice($argv, 1));
 
 if (empty($data)) {
-    $data = "Hello World!";
+    $data = "New task to work queue!";
 }
 
 $msg = new AMQPMessage($data, [
@@ -23,4 +23,4 @@ $msg = new AMQPMessage($data, [
 
 $channel->basic_publish($msg, '', 'task_queue');
 
-echo ' [x] Sent ', $data, "\n";
+echo '[x] Sent ', $data, "\n";
